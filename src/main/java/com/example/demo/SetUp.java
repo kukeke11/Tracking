@@ -60,44 +60,46 @@ public class SetUp {
         boolean detected = false;
         for (detectedMobileStation dMS:bs.msDetected) {
             //Check if station exists in BS detected list
-            if(dMS.id == ms.id){
-                //Check if distance already matches to the one before
-                if(dMS.dis == dis){
-                    //if distance matches but and positions are the same do nothing
-                    if(dMS.lastKownX == ms.lastKownX && dMS.lastKownY == ms.lastKownY){
-                        detected = true;
-                        break;
+            if(!bs.msDetected.isEmpty()){
+                if(dMS.id == ms.id){
+                    //Check if distance already matches to the one before
+                    if(dMS.dis == dis){
+                        //if distance matches but and positions are the same do nothing
+                        if(dMS.lastKownX == ms.lastKownX && dMS.lastKownY == ms.lastKownY){
+                            detected = true;
+                            break;
+                        }
+                        //if distance matches but locations is different update locations and TimeStamp
+                        else{
+                            dMS.timeStamp = new Timestamp(System.currentTimeMillis());
+                            dMS.lastKownY = ms.lastKownY;
+                            dMS.lastKownX = ms.lastKownX;
+                            detected = true;
+                            break;
+                        }
                     }
-                    //if distance matches but locations is different update locations and TimeStamp
+                    //If none detected adds a MS to BS detected list
                     else{
-                        dMS.timeStamp = new Timestamp(System.currentTimeMillis());
-                        dMS.lastKownY = ms.lastKownY;
-                        dMS.lastKownX = ms.lastKownX;
-                        detected = true;
-                        break;
+                        if(dis < bs.detectionRadiusInMeters){
+                            dMS.lastKownY = ms.lastKownY;
+                            dMS.lastKownX = ms.lastKownX;
+                            dMS.dis = dis;
+                            dMS.timeStamp = new Timestamp(System.currentTimeMillis());
+                            detected = true;
+                            break;
+                        }
+                        //IF not in range anymore remove.
+                        else{
+                            bs.msDetected.remove(dMS);
+                            detected = true;
+                            break;
+                        }
                     }
                 }
-                //If none detected adds a MS to BS detected list
+                // if none found change bool so a new one can be added
                 else{
-                    if(dis < bs.detectionRadiusInMeters){
-                        dMS.lastKownY = ms.lastKownY;
-                        dMS.lastKownX = ms.lastKownX;
-                        dMS.dis = dis;
-                        dMS.timeStamp = new Timestamp(System.currentTimeMillis());
-                        detected = true;
-                        break;
-                    }
-                    //IF not in range anymore remove.
-                    else{
-                        bs.msDetected.remove(dMS);
-                        detected = true;
-                        break;
-                    }
+                    detected = false;
                 }
-            }
-            // if none found change bool so a new one can be added
-            else{
-                detected = false;
             }
         }
         // if in range add
