@@ -1,4 +1,4 @@
-package com.example.demo;
+package stations;
 
 import java.util.UUID;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class BaseStation {
     UUID id;
     float x, y;
     float detectionRadiusInMeters;
-    List<detectedMobileStation> msDetected = new ArrayList<>();
+    List<DetectedMobileStation> msDetected = new ArrayList<>();
 
 
     public BaseStation (float x, float y, float dRIM){
@@ -28,6 +28,26 @@ public class BaseStation {
     public float getY(){
         return y;
     }
+
+    public List<DetectedMobileStation> getMsDetected() {
+        return msDetected;
+    }
+
+    public void setDetectionRadiusInMeters(float dRIM){
+        this.detectionRadiusInMeters = dRIM;
+    }
+
+    public void setID(UUID id){
+        this.id = id;
+    }
+    public void setX(float x){
+        this.x = x;
+    }
+    public void setY(float y){
+        this.y = y;
+    }
+
+
     public float getDetectionRadiusInMeters(){
         return detectionRadiusInMeters;
     }

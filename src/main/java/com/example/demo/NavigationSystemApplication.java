@@ -1,27 +1,44 @@
 package com.example.demo;
 
+import stations.BaseStation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import service.Calculate;
+import service.Logic;
+import stations.MobileStation;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class NavigationSystemApplication {
 
 	public static void main(String[] args) {
 
+		List<BaseStation> baseStations = new ArrayList<>();
+		List<MobileStation> mobileStations = new ArrayList<>();
+
 		SpringApplication.run(NavigationSystemApplication.class, args);
 		SetUp setUp = new SetUp();
+		Logic logic = new Logic();
+		Calculate calc = new Calculate();
+
 		Messages message = new Messages();
 
 		//setUp.testNumers();
-		setUp.giveRandomLocations();
-		setUp.checkLocations();
-
-		for (BaseStation bs: setUp.baseStations)
+		setUp.giveRandomLocations(baseStations, mobileStations);
+		logic.iterate(baseStations, mobileStations);
+		for (BaseStation bs: baseStations)
 		{
-			if(!bs.msDetected.isEmpty()){
+			if(!bs.getMsDetected().isEmpty()){
 				message.detectionMessage(bs);
 			}
 		}
+		for (MobileStation ms: mobileStations
+			 ) {
+			logic.handleTriangulation(ms, baseStations);
+		}
+
 	}
 
 }
