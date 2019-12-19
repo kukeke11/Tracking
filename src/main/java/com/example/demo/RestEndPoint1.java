@@ -11,21 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-public class NavigationSystemApplication {
+public class RestEndPoint1 {
 
 	public static void main(String[] args) {
 
 		List<BaseStation> baseStations = new ArrayList<>();
 		List<MobileStation> mobileStations = new ArrayList<>();
 
-		SpringApplication.run(NavigationSystemApplication.class, args);
+		SpringApplication.run(RestEndPoint1.class, args);
 		SetUp setUp = new SetUp();
 		Logic logic = new Logic();
 		Calculate calc = new Calculate();
 
 		Messages message = new Messages();
 
-		//setUp.testNumers();
 		setUp.giveRandomLocations(baseStations, mobileStations);
 		logic.iterate(baseStations, mobileStations);
 		for (BaseStation bs: baseStations)

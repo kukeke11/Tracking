@@ -25,7 +25,6 @@ public class MobileStation {
     public float getlastKownY(){
         return lastKownY;
     }
-
     public List<DetectedByBaseStation> getDetectedBy() {
         return detectedBy;
     }

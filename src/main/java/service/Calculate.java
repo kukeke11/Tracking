@@ -49,10 +49,10 @@ public class Calculate {
                     dMS.setLastKnownX(x);
                     dMS.setLastKnownY(y);
                     dMS.setTriangulated(true);
-                    System.out.println( "MS X" + dMS.getLastKnownX() + "MS Y" + dMS.getLastKnownY());
-                    System.out.println( "got X" + x + "got Y" + y);
                 }
             }
         }
+        System.out.println( "Mobile Station ID: " + msID);
+        System.out.println( "Location detected, X: " + x + " Y: "+y);
     }
 }

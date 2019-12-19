@@ -28,7 +28,9 @@ public class BaseStation {
     public float getY(){
         return y;
     }
-
+    public float getDetectionRadiusInMeters(){
+        return detectionRadiusInMeters;
+    }
     public List<DetectedMobileStation> getMsDetected() {
         return msDetected;
     }
@@ -36,7 +38,6 @@ public class BaseStation {
     public void setDetectionRadiusInMeters(float dRIM){
         this.detectionRadiusInMeters = dRIM;
     }
-
     public void setID(UUID id){
         this.id = id;
     }
@@ -47,8 +48,4 @@ public class BaseStation {
         this.y = y;
     }
 
-
-    public float getDetectionRadiusInMeters(){
-        return detectionRadiusInMeters;
-    }
 }

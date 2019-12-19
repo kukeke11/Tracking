@@ -37,14 +37,13 @@ public class DetectedMobileStation {
     public Timestamp getTimeStamp(){
         return timeStamp;
     }
-
     public boolean getTriangulated(){
         return triangulated;
     }
-
     public double getDis(){
         return dis;
     }
+
 
     public void setID(UUID id){
         this.id = id;
@@ -58,11 +57,9 @@ public class DetectedMobileStation {
     public void setTimeStamp(Timestamp timeStamp){
         this.timeStamp = timeStamp;
     }
-
     public void setTriangulated(boolean triangulated){
         this.triangulated = triangulated;
     }
-
     public void setDis(double dis){
         this.dis = dis;
     }

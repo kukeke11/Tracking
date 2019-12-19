@@ -2,6 +2,7 @@ package com.example.demo;
 
 import stations.BaseStation;
 import stations.DetectedMobileStation;
+import stations.MobileStation;
 
 public class Messages {
 //Print messages
