@@ -10,8 +10,8 @@ import java.util.Random;
 public class SetUp {
     Random rand = new Random();
 
-    int min = 0;
-    int max = 50;
+    private int min = 0;
+    private int max = 50;
 
     public void giveRandomLocations(List<BaseStation> baseStations,List<MobileStation> mobileStations)
     {

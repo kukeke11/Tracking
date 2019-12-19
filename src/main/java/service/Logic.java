@@ -50,9 +50,6 @@ public class Logic {
             }
             calculation.triangulatePosition(ms.getID(), x1,x2,x3,y1,y2,y3,dist1,dist2,dist3, baseStations);
         }
-        else{
-            //System.out.println("None Detected");
-        }
     }
 
     public void checkDetected(BaseStation bs, MobileStation ms, double dis){

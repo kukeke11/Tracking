@@ -21,7 +21,6 @@ public class RestEndPoint1 {
 		SpringApplication.run(RestEndPoint1.class, args);
 		SetUp setUp = new SetUp();
 		Logic logic = new Logic();
-		Calculate calc = new Calculate();
 
 		Messages message = new Messages();
 

@@ -13,7 +13,6 @@ import java.util.UUID;
 
 public class Calculate {
 
-    SetUp setUp = new SetUp();
     public double radiusDetection(BaseStation bs,
                                   MobileStation ms){
         double dis;
